@@ -1,0 +1,11 @@
+# Ignore node_modules directory
+node_modules
+
+# Ignore npm debugging logs
+npm-debug.log
+
+# Ignore any local build artifacts
+build
+
+# Ignore any development-related directories or files
+.vscode
