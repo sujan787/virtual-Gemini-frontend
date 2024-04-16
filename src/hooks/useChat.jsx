@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-const backendUrl = "https://virtual-gemini-backend-1.onrender.com";
+const backendUrl = "http://15.207.72.191:3000";
 
 const ChatContext = createContext();
 
