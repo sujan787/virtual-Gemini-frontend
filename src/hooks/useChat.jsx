@@ -7,6 +7,7 @@ const ChatContext = createContext();
 
 export const ChatProvider = ({ children }) => {
   const chat = async (message) => {
+    console.log(backendUrl)
     setLoading(true);
     const data = await fetch(`${backendUrl}/chat`, {
       method: "POST",
