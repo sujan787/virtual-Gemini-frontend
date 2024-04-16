@@ -1,0 +1,35 @@
+name: CICD
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v3
+      - name: Login to Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_HUB_USER_NAME }} -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN}}
+      - name: Build Docker frontend Image
+        run: docker build -t sujan9748/virtual_gemini_frontend .
+      - name: Publish Backend image to Docker Hub
+        run: docker push sujan9748/virtual_gemini_frontend:latest
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Remove all stopped containers
+        run: docker container prune -f
+      - name: Remove all unused images
+        run: docker image prune -f
+      - name: Pull Node Image from the Docker Hub
+        run: docker pull sujan9748/virtual_gemini_frontend:latest
+      - name: Delete Old Node Container
+        run: docker rm -f GeminiReactContainer
+      - name: Run docker Node container
+        run: docker run -d -p 3001:80 --name GeminiReactContainer sujan9748/virtual_gemini_frontend
+
