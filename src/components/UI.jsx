@@ -1,5 +1,5 @@
 import { useChat } from "../hooks/useChat";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 export const UI = ({ hidden, ...props }) => {
   const input = useRef();
@@ -12,13 +12,13 @@ export const UI = ({ hidden, ...props }) => {
       input.current.value = "";
     }
   };
+
   if (hidden) {
     return null;
   }
 
   return (
     <>
-
       <div className="fixed top-0 left-0 right-0 bottom-0 z-10 flex justify-between p-4 flex-col pointer-events-none">
 
         <div className="self-start backdrop-blur-md bg-white bg-opacity-50 p-2 md:p-4 rounded-lg">
