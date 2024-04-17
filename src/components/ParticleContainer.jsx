@@ -16,7 +16,7 @@ const ParticleContainer = ({ children }) => {
         await console.log(container);
     }, []);
 
-    return (<main className="px-4 md:px-32 lg:px-32 relative h-screen">
+    return (<main className=" relative h-screen">
         <Particles
             className=" absolute z-[-1] top-0 bottom-0 right-0 left-0 "
             id="tsparticles"
