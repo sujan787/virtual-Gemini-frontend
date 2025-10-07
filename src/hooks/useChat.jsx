@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 
-const backendUrl = "https://129.80.236.227/gemini-backend";
+const backendUrl = "https://gemini.arczila.com/gemini-server";
 // const backendUrl = "http://localhost:3000";
 
 const ChatContext = createContext();
